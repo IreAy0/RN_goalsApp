@@ -35,12 +35,14 @@ export default function EditGoal({ route, navigation }) {
       <TextInput
         style={styles.textInput}
         placeholder="Title"
+        placeholderTextColor="#595959"
         onChangeText={setTitle}
         value={title}
       />
       <TextInput
         style={styles.textInput}
         placeholder="Description"
+        placeholderTextColor="#595959"
         onChangeText={setDescription}
         value={description}
       />

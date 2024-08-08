@@ -48,6 +48,7 @@ function GoalInput(props) {
             <TextInput
               style={styles.textInput}
               placeholder="Title"
+              placeholderTextColor="#595959"
               onChangeText={titleInputHandler}
               value={todoTitle}
             />
@@ -55,6 +56,7 @@ function GoalInput(props) {
             <TextInput
               style={styles.textInput}
               placeholder="Description"
+              placeholderTextColor="#595959"
               onChangeText={descriptionInputHandler}
               value={todoDescription}
             />
@@ -75,11 +77,8 @@ function GoalInput(props) {
           </View>
         </View>
       </KeyboardAvoidingView>
-
     </Modal>
     </>
-   
-
   );
 }
 
@@ -105,7 +104,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#e4d0ff",
     backgroundColor: "#e4d0ff",
-    color: '#120438',
     borderRadius: 6,
     width: "100%",
     padding: 8,
