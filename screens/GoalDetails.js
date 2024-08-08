@@ -2,6 +2,7 @@ import { Button, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import { useGoals } from '../store/GoalContext'
 import { useIsFocused } from '@react-navigation/native';
+import PrimaryButton from '../components/PrimaryButton';
 
 export default function GoalDetails({route, navigation}) {
 
@@ -28,9 +29,14 @@ export default function GoalDetails({route, navigation}) {
     <View style={styles.container}>
     <Text style={styles.title}>Goal Title: {goalDetails?.title}</Text>
     <Text style={styles.description}>{goalDetails?.description}</Text>
-    <View style={styles.buttonContainer}>
-      <Button title="Delete" onPress={handleDelete} color="#f31282" />
-      <Button title="Edit" onPress={handleEdit} color="#5e0acc" />
+    <View style={styles.buttonsContainer}>
+      <View style={styles.buttonContainer}>
+      <PrimaryButton onPress={handleDelete} buttonStyle={{backgroundColor: '#f31282'}}>Delete</PrimaryButton>
+      </View>
+      <View style={styles.buttonContainer}>
+      <PrimaryButton  onPress={handleEdit} buttonStyle={{backgroundColor: '#5e0acc'}}>Edit</PrimaryButton>
+      </View>
+  
     </View>
   </View>
   )
@@ -52,10 +58,12 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 16,
   },
-  buttonContainer: {
+  buttonsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     marginTop: 16,
+  },
+  buttonContainer:{
+    flex: 1
   },
   centered: {
     flex: 1,

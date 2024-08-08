@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, StyleSheet, TextInput, View, Alert } from 'react-native';
 import { useGoals } from '../store/GoalContext';
+import PrimaryButton from '../components/PrimaryButton';
 
 export default function EditGoal({ route, navigation }) {
   const { goalId } = route.params;
@@ -44,7 +45,7 @@ export default function EditGoal({ route, navigation }) {
         value={description}
       />
       <View style={styles.buttonContainer}>
-        <Button title="Update Goal" onPress={handleUpdate} color="#5e0acc" />
+        <PrimaryButton onPress={handleUpdate} buttonStyle={{backgroundColor: '#5e0acc'}}>Save changes</PrimaryButton>
       </View>
     </View>
   );

@@ -7,8 +7,11 @@ import {
   Modal,
   Image,
   Alert,
+  KeyboardAvoidingView,
+  Platform
 } from "react-native";
 import { useGoals } from "../store/GoalContext";
+import PrimaryButton from "./PrimaryButton";
 
 function GoalInput(props) {
   const [todoTitle, setTodoTitle] = useState("")
@@ -35,47 +38,52 @@ function GoalInput(props) {
   };
 
   return (
+
     <Modal visible={props.visible} animationType="slide">
-      <View style={styles.inputContainer}>
-        <Image style={styles.image} source={require('../assets/images/goal.png')} />
-        <View style={styles.inputInnerContainer}>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Title"
-            onChangeText={titleInputHandler}
-            value={todoTitle}
-          />
+      <KeyboardAvoidingView style={styles.screen} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <View style={styles.inputContainer}>
+          <Image style={styles.image} source={require('../assets/images/goal.png')} />
+          <View style={styles.inputInnerContainer}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Title"
+              onChangeText={titleInputHandler}
+              value={todoTitle}
+            />
 
-          <TextInput
-            style={styles.textInput}
-            placeholder="Description"
-            onChangeText={descriptionInputHandler}
-            value={todoDescription}
-          />
-        </View>
-
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button
-              title="Add Goal"
-              onPress={addGoalHandler}
-              color="#b180f0"
+            <TextInput
+              style={styles.textInput}
+              placeholder="Description"
+              onChangeText={descriptionInputHandler}
+              value={todoDescription}
             />
           </View>
-          <View style={styles.button}>
-            <Button
-              title="Cancel"
-              onPress={props.onCancel}
-              color="#f31282"
-            />
+
+          <View style={styles.buttonContainer}>
+            <View style={styles.button}>
+              <PrimaryButton
+                onPress={addGoalHandler}
+              >Add Goal</PrimaryButton>
+            </View>
+            <View style={styles.button}>
+              <PrimaryButton
+                onPress={props.onCancel}
+                buttonStyle={{ backgroundColor: '#f31282' }}
+              >Cancel</PrimaryButton>
+            </View>
           </View>
         </View>
-      </View>
+      </KeyboardAvoidingView>
+
     </Modal>
+
   );
 }
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1
+  },
   inputContainer: {
     flex: 1,
     flexDirection: "column",
@@ -104,7 +112,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   button: {
-    width: 100,
+    flex: 1,
     marginHorizontal: 8,
   },
   image: {

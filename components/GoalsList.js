@@ -5,7 +5,7 @@ import GoalItem from './GoalItem';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function GoalsList() {
-  const { goals, deleteGoal, viewGoalDetails } = useGoals();
+  const { goals, deleteGoal, viewGoalDetails} = useGoals();
 
   function deleteGoalHandler(id) {
     deleteGoal(id)
@@ -18,22 +18,26 @@ export default function GoalsList() {
           <Text style={styles.emptyText}>No goals added. Start adding some!</Text>
         </View>
       ) : (
-        <FlatList
-          data={goals}
-          alwaysBounceVertical={false}
-          renderItem={(itemData) => {
-            return (
-              <GoalItem
-                id={itemData.item.id}
-                text={itemData.item.title}
-                onDeleteItem={deleteGoalHandler}
-              />
-            );
-          }}
-          keyExtractor={(item, index) => {
-            return item.id;
-          }}
-        />
+        <View style={styles.listContainer} >
+          <Text style={styles.subtitle}>All Goals</Text>
+          <FlatList
+            data={goals}
+            alwaysBounceVertical={false}
+            renderItem={(itemData) => {
+              return (
+                <GoalItem
+                  id={itemData.item.id}
+                  text={itemData.item.title}
+                  onDeleteItem={deleteGoalHandler}
+                />
+              );
+            }}
+            keyExtractor={(item, index) => {
+              return item.id;
+            }}
+          />
+        </View>
+
       )}
 
     </View>
@@ -54,4 +58,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#ccc',
   },
+  subtitle: {
+    color: 'black',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  listContainer: {
+    marginTop: 20
+  }
 })

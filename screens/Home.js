@@ -2,6 +2,7 @@ import { Button, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import GoalInput from '../components/GoalInput';
 import GoalsList from '../components/GoalsList';
+import PrimaryButton from '../components/PrimaryButton';
 
 export default function Home() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
@@ -18,11 +19,9 @@ export default function Home() {
   }
   return (
     <View style={styles.appContainer}>
-        <Button
-          title="Add New Goal"
-          color="#a065ec"
-          onPress={startAddGoalHandler}
-        />
+        <PrimaryButton onPress={startAddGoalHandler}>
+          Add New Goal
+        </PrimaryButton>
         <GoalInput onCancel={endAddGoalHandler} visible={modalIsVisible} onAddGoal={addGoalHandler} />
         <GoalsList />
       </View>
