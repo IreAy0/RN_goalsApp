@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 
-function GoalItem({ id, text, onDeleteItem }) {
+function GoalItem({ id, text }) {
   const navigation = useNavigation()
 
   return (

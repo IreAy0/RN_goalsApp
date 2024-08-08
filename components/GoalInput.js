@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Button,
   StyleSheet,
   TextInput,
   View,
@@ -12,6 +11,7 @@ import {
 } from "react-native";
 import { useGoals } from "../store/GoalContext";
 import PrimaryButton from "./PrimaryButton";
+import { StatusBar } from "expo-status-bar";
 
 function GoalInput(props) {
   const [todoTitle, setTodoTitle] = useState("")
@@ -38,8 +38,9 @@ function GoalInput(props) {
   };
 
   return (
-
-    <Modal visible={props.visible} animationType="slide">
+    <>
+     <StatusBar style="light" />
+     <Modal visible={props.visible} animationType="slide">
       <KeyboardAvoidingView style={styles.screen} behavior={Platform.OS === "ios" ? "padding" : "height"}>
         <View style={styles.inputContainer}>
           <Image style={styles.image} source={require('../assets/images/goal.png')} />
@@ -76,6 +77,8 @@ function GoalInput(props) {
       </KeyboardAvoidingView>
 
     </Modal>
+    </>
+   
 
   );
 }
