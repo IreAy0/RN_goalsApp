@@ -11,7 +11,6 @@ import {
 } from "react-native";
 import { useGoals } from "../store/GoalContext";
 import PrimaryButton from "./PrimaryButton";
-import { StatusBar } from "expo-status-bar";
 
 function GoalInput(props) {
   const [todoTitle, setTodoTitle] = useState("")
@@ -39,7 +38,6 @@ function GoalInput(props) {
 
   return (
     <>
-     <StatusBar style="light" />
      <Modal visible={props.visible} animationType="slide">
       <KeyboardAvoidingView style={styles.screen} behavior={Platform.OS === "ios" ? "padding" : "height"}>
         <View style={styles.inputContainer}>

@@ -27,7 +27,7 @@ export default function GoalDetails({route, navigation}) {
 
   return (
     <View style={styles.container}>
-    <Text style={styles.title}>Goal Title: {goalDetails?.title}</Text>
+    <Text style={styles.title}>{goalDetails?.title}</Text>
     <Text style={styles.description}>{goalDetails?.description}</Text>
     <View style={styles.buttonsContainer}>
       <View style={styles.buttonContainer}>
